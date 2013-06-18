@@ -1,18 +1,18 @@
-{ Schema } = mongoose = require 'mongoose'
+App = require '../application.coffee'
 
-standupSchema = new Schema
+App.Standup = DS.Model.extend
   # Red, Yellow, or Green
-  status: String
+  status: DS.attr 'string'
   # What did you work on today?
-  today: String
+  today: DS.attr 'string'
   # What do you plan to work on tomorrow?
-  tomorrow: String
+  tomorrow: DS.attr 'string'
   # What barriers, questions, or issues are you facing?
-  questions: String
-  timestamp: { type: Date, default: Date.now }
+  questions: DS.attr 'string'
+  timestamp: DS.attr 'date'
   # This field will store a user id which will be populated on query
   # Once we implement the users model, we'll use this schema type:
   # { type: Schema.Types.ObjectId, ref: 'User' }
-  user: String
+  user: DS.attr 'string'
 
-module.exports = mongoose.model 'Standup', standupSchema
+module.exports = App.Standup

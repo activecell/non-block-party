@@ -1,0 +1,27 @@
+<h3>Submit a new standup</h3>
+<form method=POST action=/>
+  <p>
+    <label for=status>Status</label>
+    <select name=status id=status>
+      <option value="Green">Green</option>
+      <option value="Yellow">Yellow</option>
+      <option value="Red">Red</option>
+    </select>
+  </p>
+  <p>
+    <label for=today>Today</label>
+    <textarea name=today id=today></textarea>
+  </p>
+  <p>
+    <label for=tomorrow>Tomorrow</label>
+    <textarea name=tomorrow id=tomorrow></textarea>
+  </p>
+  <p>
+    <label for=questions>Questions</label>
+    <textarea name=questions id=questions></textarea>
+  <p>
+    <label for=user>User</label>
+    <input name=user id=user />
+  </p>
+  <input type=submit />
+</form>

@@ -20,7 +20,8 @@ module.exports = (grunt) ->
         src: [
           "vendor/jquery.js",
           "vendor/handlebars.js",
-          "vendor/ember.js"
+          "vendor/ember.js",
+          "vendor/ember-data.js"
         ]
         dest: "public/js/vendor.js"
 
@@ -36,8 +37,18 @@ module.exports = (grunt) ->
     uglify:
       app:
         files:
-          "public/js/app.min.js": ["public/js/vendor.js", "public/js/app.js"]
+          "public/js/app.min.js": ["public/js/vendor.js", "public/js/templates.js", "public/js/app.js"]
 
+
+    ember_handlebars:
+      compile:
+        options:
+          processName: (name) ->
+            name
+              .replace('src/app/views/', '')
+              .replace('.hbs', '')
+        files:
+          "public/js/templates.js": ["src/app/views/**/*.hbs"]
 
     # The watch task can be used to monitor the filesystem and execute
     # specific tasks when files are modified.  By default, the watch task is
@@ -45,9 +56,13 @@ module.exports = (grunt) ->
     # runtime builder (use if you have a custom server, PhoneGap, Adobe Air,
     # etc.)
     watch:
-      compile:
+      app:
         files: ["src/app/**/*.coffee"]
         tasks: ["coffeeify"]
+
+      hbs:
+        files: ["src/app/views/**/*.hbs"]
+        tasks: ["ember_handlebars"]
 
       vendor:
         files: ["vendor/**/*.js"]
@@ -64,7 +79,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-ember-handlebars"
   grunt.loadNpmTasks "grunt-coffeeify"
 
-  grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass"]
+  grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass", "ember_handlebars"]
   grunt.registerTask "production", ["compile", "uglify"]

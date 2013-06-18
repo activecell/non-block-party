@@ -25,7 +25,7 @@ app = express()
 
 app.configure ->
   app.set "port", PORT
-  app.set "views", "#{__dirname}/../../views"
+  app.set "views", "#{__dirname}/views"
   app.set "view engine", "hbs"
   #app.use forceSSL
   app.use express.favicon()
@@ -39,8 +39,11 @@ app.configure ->
       url: MONGO_URI
   app.use app.router
   app.use require('./routes').middleware
-  #app.use '/api/v1', require('./routes/api').middleware
+  app.use '/api/v1', require('./routes/api').middleware
   app.use express.static(path.join(__dirname, '..', '..', "public"))
+  app.use (req, res) ->
+    # catch all to redirect to ember app
+    res.redirect 301, "/##{req.url}"
 
 # Infinite stack trace
 Error.stackTraceLimit = Infinity
