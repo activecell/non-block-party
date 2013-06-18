@@ -6166,5 +6166,20 @@ a.badge:focus {
   position: fixed;
 }
 
-h3 {
+body {
+  max-width: 800px;
+  margin: auto;
   color: #333; }
+
+h3 {
+  color: #333333; }
+
+table {
+  margin: auto; }
+
+.new-standup {
+  border: 3px solid #333;
+  width: 300px;
+  text-align: center; }
+  .new-standup textarea {
+    height: 80px; }
