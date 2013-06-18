@@ -10,7 +10,7 @@ router.get '/', (req, res) ->
 router.post '/', (req, res) ->
   standup = new Standup req.body
   standup.save()
-  res.redirect 201, '/updates'
+  res.redirect '/updates'
 
 router.get '/updates', (req, res) ->
   Standup.find().sort('-timestamp').exec (err, standups) ->

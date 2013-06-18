@@ -1,7 +1,7 @@
 {
-  "name": "embers",
+  "name": "sand",
   "version": "0.0.0",
-  "description": "embers",
+  "description": "sand",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
