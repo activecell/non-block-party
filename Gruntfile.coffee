@@ -24,6 +24,12 @@ module.exports = (grunt) ->
           "vendor/ember-data.js"
         ]
         dest: "public/js/vendor.js"
+      css:
+        src: [
+          "vendor/bootstrap.css",
+          "public/css/index.css"
+        ]
+        dest: "public/css/index.css"
 
     # The stylus task is used to compile Stylus stylesheets into a single
     # CSS file for debug and release deployments.
@@ -68,9 +74,9 @@ module.exports = (grunt) ->
         files: ["vendor/**/*.js"]
         tasks: ["concat:vendor"]
 
-      stylus:
+      scss:
         files: ["styles/**/*.scss"]
-        tasks: ["sass"]
+        tasks: ["sass", "concat:css"]
 
 
 
@@ -82,5 +88,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-ember-handlebars"
   grunt.loadNpmTasks "grunt-coffeeify"
 
-  grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass", "ember_handlebars"]
+  grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass", "ember_handlebars", "concat:css"]
   grunt.registerTask "production", ["compile", "uglify"]
