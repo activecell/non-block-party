@@ -1,3 +1,8 @@
+<header>
+  {{#linkTo index}}<button>Home</button>{{/linkTo}}
+  {{#linkTo updates}}<button>Updates</button>{{/linkTo}}
+</header>
+
 <div class=new-standup>
   <h3>Submit a new standup</h3>
   <form {{action "submit" on="submit"}}>

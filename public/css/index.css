@@ -6171,6 +6171,10 @@ body {
   margin: auto;
   color: #333; }
 
+header {
+  text-align: center;
+  padding: 10px; }
+
 h3 {
   color: #333333; }
 
