@@ -1,0 +1,20 @@
+{
+  "name": "embers",
+  "version": "0.0.0",
+  "description": "embers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/switz/embers.git"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "express": "~3.2.6",
+    "mongoose": "~3.6.11",
+    "connect-mongo": "~0.3.2"
+  }
+}
