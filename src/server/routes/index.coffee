@@ -9,4 +9,7 @@ router.get '/', (req, res) ->
 router.post '/', (req, res) ->
   res.json req.body
 
+router.get '/updates', (req, res) ->
+  res.render 'updates'
+
 module.exports = router
