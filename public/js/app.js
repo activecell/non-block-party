@@ -63,9 +63,11 @@
 
 },{"../application.coffee":1}],4:[function(require,module,exports){
 (function() {
-  var App;
+  var App, standups;
 
   App = require('./application.coffee');
+
+  standups = null;
 
   App.Router.map(function() {
     this.resource('index', {
@@ -78,7 +80,10 @@
 
   App.UpdatesRoute = Ember.Route.extend({
     model: function() {
-      return App.Standup.find();
+      return standups != null ? standups : standups = App.Standup.find();
+    },
+    setupController: function(controller, standups) {
+      return controller.set('standups', standups);
     }
   });
 
