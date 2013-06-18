@@ -25,8 +25,8 @@ app = express()
 
 app.configure ->
   app.set "port", PORT
-  app.set "views", "#{__dirname}/views"
-  app.set "view engine", "jade"
+  app.set "views", "#{__dirname}/../../views"
+  app.set "view engine", "hbs"
   #app.use forceSSL
   app.use express.favicon()
   app.use express.logger("dev")
