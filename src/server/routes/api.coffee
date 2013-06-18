@@ -9,7 +9,8 @@ router.get '/standups', (req, res) ->
     res.json standups: standups
 
 router.post '/standups', (req, res) ->
-  standup = new Standup req.body
+  return res.json {} unless req.body and req.body.standup
+  standup = new Standup req.body.standup
   standup.save()
   res.json standup
 

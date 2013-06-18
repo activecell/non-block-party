@@ -9,12 +9,14 @@
     <th>User</th>
   </tr>
   {{#each model}}
-    <tr>
-      <td>{{status}}</td>
-      <td>{{today}}</td>
-      <td>{{tomorrow}}</td>
-      <td>{{questions}}</td>
-      <td>{{user}}</td>
-    </tr>
+    {{#if id}}
+      <tr>
+        <td>{{status}}</td>
+        <td>{{today}}</td>
+        <td>{{tomorrow}}</td>
+        <td>{{questions}}</td>
+        <td>{{user}}</td>
+      </tr>
+    {{/if}}
   {{/each}}
 </table>

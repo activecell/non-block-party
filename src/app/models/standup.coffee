@@ -9,7 +9,7 @@ App.Standup = DS.Model.extend
   tomorrow: DS.attr 'string'
   # What barriers, questions, or issues are you facing?
   questions: DS.attr 'string'
-  timestamp: DS.attr 'date'
+  #timestamp: DS.attr 'date'
   # This field will store a user id which will be populated on query
   # Once we implement the users model, we'll use this schema type:
   # { type: Schema.Types.ObjectId, ref: 'User' }
