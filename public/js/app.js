@@ -4,6 +4,10 @@
 
   module.exports = window.App = Ember.Application.create();
 
+  App.status = {
+    content: ['Green', 'Yellow', 'Red']
+  };
+
   store = require('./store.coffee');
 
   standup = require('./models/standup.coffee');
@@ -19,14 +23,9 @@
 
   App = require('./application.coffee');
 
-  App.Store = DS.Store.extend({
-    revision: 13,
-    adapter: DS.RESTAdapter
-  });
-
-  DS.RESTAdapter.extend({
+  App.Adapter = DS.RESTAdapter.extend({
     serializer: DS.RESTSerializer.extend({
-      primaryKey: function(type) {
+      primaryKey: function() {
         return '_id';
       }
     })
@@ -36,6 +35,11 @@
     namespace: 'api/v1'
   });
 
+  App.Store = DS.Store.extend({
+    revision: 13,
+    adapter: 'App.Adapter'
+  });
+
   module.exports = App.Store;
 
 }).call(this);
@@ -43,11 +47,9 @@
 
 },{"./application.coffee":1}],4:[function(require,module,exports){
 (function() {
-  var App, standups;
+  var App;
 
   App = require('./application.coffee');
-
-  standups = null;
 
   App.Router.map(function() {
     this.resource('index', {
@@ -58,12 +60,24 @@
     });
   });
 
+  App.IndexController = Ember.Controller.extend({
+    submit: function() {
+      var form, standup;
+      form = this.getProperties("today", "tomorrow", "questions", "user");
+      form.status = App.status.value;
+      standup = App.Standup.createRecord(form);
+      debugger;
+      standup.save();
+      return this.transitionToRoute('updates');
+    }
+  });
+
   App.UpdatesRoute = Ember.Route.extend({
     model: function() {
-      return standups != null ? standups : standups = App.Standup.find();
+      return App.Standup.find();
     },
-    setupController: function(controller, standups) {
-      return controller.set('standups', standups);
+    setupController: function(controller, model) {
+      return controller.set('standups', model);
     }
   });
 

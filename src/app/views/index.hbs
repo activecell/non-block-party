@@ -1,27 +1,23 @@
 <h3>Submit a new standup</h3>
-<form method=POST action=/>
+<form {{action "submit" on="submit"}}>
   <p>
     <label for=status>Status</label>
-    <select name=status id=status>
-      <option value="Green">Green</option>
-      <option value="Yellow">Yellow</option>
-      <option value="Red">Red</option>
-    </select>
+    {{view Ember.Select contentBinding="App.status.content" valueBinding="App.status.value" name=status id=status}}
   </p>
   <p>
     <label for=today>Today</label>
-    <textarea name=today id=today></textarea>
+    {{textarea value=today id=today}}
   </p>
   <p>
     <label for=tomorrow>Tomorrow</label>
-    <textarea name=tomorrow id=tomorrow></textarea>
+    {{textarea value=tomorrow id=tomorrow}}
   </p>
   <p>
     <label for=questions>Questions</label>
-    <textarea name=questions id=questions></textarea>
+    {{textarea value=questions id=questions}}
   <p>
     <label for=user>User</label>
-    <input name=user id=user />
+    {{input value=user type="text" id=user}}
   </p>
   <input type=submit />
   {{#linkTo updates}}<button>View All</button>{{/linkTo}}

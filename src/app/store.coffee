@@ -1,14 +1,14 @@
 App = require './application.coffee'
 
-App.Store = DS.Store.extend
-  revision: 13
-  adapter: DS.RESTAdapter
-
-DS.RESTAdapter.extend
+App.Adapter = DS.RESTAdapter.extend
   serializer: DS.RESTSerializer.extend
-    primaryKey: (type) -> '_id'
+    primaryKey: -> '_id'
 
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
+
+App.Store = DS.Store.extend
+  revision: 13
+  adapter: 'App.Adapter'
 
 module.exports = App.Store
