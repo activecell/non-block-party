@@ -1,1 +1,1 @@
-console.log "yup, we're here"
+App = Ember.Application.create()

@@ -1,1 +1,3 @@
-console.log("yup, we're here");
+var App;
+
+App = Ember.Application.create();
