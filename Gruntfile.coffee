@@ -4,13 +4,12 @@
 module.exports = (grunt) ->
   grunt.initConfig
 
-    coffee:
+    coffeeify:
       app:
-        src: ["src/app/**/*.coffee"]
-        dest: "public/js/app.js"
-        options:
-          bare: true
-          join: true
+        files: [
+          src: ["src/app/application.coffee"]
+          dest: 'public/js/app.js'
+        ]
 
     # The concatenate task is used here to merge the almond require/define
     # shim and the templates into the application code.  Its named
@@ -48,7 +47,7 @@ module.exports = (grunt) ->
     watch:
       compile:
         files: ["src/app/**/*.coffee"]
-        tasks: ["coffee"]
+        tasks: ["coffeeify"]
 
       vendor:
         files: ["vendor/**/*.js"]
@@ -65,6 +64,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-sass"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-coffeeify"
 
-  grunt.registerTask "compile", ["concat:vendor", "coffee", "sass"]
+  grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass"]
   grunt.registerTask "production", ["compile", "uglify"]
