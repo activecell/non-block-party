@@ -9,16 +9,16 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   
-  data.buffer.push("Updates");
+  data.buffer.push("<button>View All</button>");
   }
 
-  data.buffer.push("<p>");
+  data.buffer.push("<h3>Submit a new standup</h3>\n<form method=POST action=/>\n  <p>\n    <label for=status>Status</label>\n    <select name=status id=status>\n      <option value=\"Green\">Green</option>\n      <option value=\"Yellow\">Yellow</option>\n      <option value=\"Red\">Red</option>\n    </select>\n  </p>\n  <p>\n    <label for=today>Today</label>\n    <textarea name=today id=today></textarea>\n  </p>\n  <p>\n    <label for=tomorrow>Tomorrow</label>\n    <textarea name=tomorrow id=tomorrow></textarea>\n  </p>\n  <p>\n    <label for=questions>Questions</label>\n    <textarea name=questions id=questions></textarea>\n  <p>\n    <label for=user>User</label>\n    <input name=user id=user />\n  </p>\n  <input type=submit />\n  ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers.linkTo),stack1 ? stack1.call(depth0, "updates", options) : helperMissing.call(depth0, "linkTo", "updates", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("</p>\n\n<h3>Submit a new standup</h3>\n<form method=POST action=/>\n  <p>\n    <label for=status>Status</label>\n    <select name=status id=status>\n      <option value=\"Green\">Green</option>\n      <option value=\"Yellow\">Yellow</option>\n      <option value=\"Red\">Red</option>\n    </select>\n  </p>\n  <p>\n    <label for=today>Today</label>\n    <textarea name=today id=today></textarea>\n  </p>\n  <p>\n    <label for=tomorrow>Tomorrow</label>\n    <textarea name=tomorrow id=tomorrow></textarea>\n  </p>\n  <p>\n    <label for=questions>Questions</label>\n    <textarea name=questions id=questions></textarea>\n  <p>\n    <label for=user>User</label>\n    <input name=user id=user />\n  </p>\n  <input type=submit />\n</form>");
+  data.buffer.push("\n</form>");
   return buffer;
   
 });
@@ -31,7 +31,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   
-  data.buffer.push("Home");
+  data.buffer.push("<button>Home</button>");
   }
 
 function program3(depth0,data) {
