@@ -41,9 +41,6 @@ app.configure ->
   app.use require('./routes').middleware
   #app.use '/api/v1', require('./routes/api').middleware
   app.use express.static(path.join(__dirname, '..', '..', "public"))
-  app.use (req, res) ->
-    # catch all to redirect to ember app
-    res.redirect 301, "/##{req.url}"
 
 # Infinite stack trace
 Error.stackTraceLimit = Infinity

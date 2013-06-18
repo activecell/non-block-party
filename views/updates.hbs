@@ -1,1 +1,20 @@
-There should be a table here, but there isn't yet. Silly me.
+There should be a table here, but there isn't yet due to lack of data. Silly me.
+
+<table border=1 cellpadding=5 width=100%>
+  <tr>
+    <th>Status</th>
+    <th>Today</th>
+    <th>Tomorrow</th>
+    <th>Questions</th>
+    <th>User</th>
+  </tr>
+  {{#each standups}}
+    <tr>
+      <td>{{status}}</td>
+      <td>{{today}}</td>
+      <td>{{tomorrow}}</td>
+      <td>{{questions}}</td>
+      <td>{{_user}}</td>
+    </tr>
+  {{/each}}
+</table>
