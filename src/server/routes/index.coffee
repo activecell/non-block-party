@@ -13,7 +13,7 @@ router.post '/', (req, res) ->
   res.redirect 201, '/updates'
 
 router.get '/updates', (req, res) ->
-  Standup.find (err, standups) ->
+  Standup.find().sort('-timestamp').exec (err, standups) ->
     res.render 'updates', { standups }
 
 module.exports = router
