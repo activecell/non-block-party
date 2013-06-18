@@ -11,6 +11,8 @@ standupSchema = new Schema
   questions: String
   timestamp: { type: Date, default: Date.now }
   # This field will store a user id which will be populated on query
-  _user: { type: Schema.Types.ObjectId, ref: 'User' }
+  # Once we implement the users model, we'll use this schema type:
+  # { type: Schema.Types.ObjectId, ref: 'User' }
+  user: String
 
 Standup = mongoose.model 'Standup', standupSchema

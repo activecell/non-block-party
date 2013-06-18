@@ -8,7 +8,9 @@ router.get '/', (req, res) ->
   res.render 'index'
 
 router.post '/', (req, res) ->
-  res.json req.body
+  standup = new Standup req.body
+  standup.save()
+  res.redirect 201, '/updates'
 
 router.get '/updates', (req, res) ->
   Standup.find (err, standups) ->
