@@ -42,7 +42,7 @@ function program5(depth0,data) {
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "submit", {hash:{
     'on': ("submit")
   },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n    <p>\n      <label for=status>Status</label>\n      ");
+  data.buffer.push(" class=standup-form>\n    <p>\n      <label for=status>Status</label>\n      ");
   hashContexts = {'contentBinding': depth0,'valueBinding': depth0,'name': depth0,'id': depth0};
   hashTypes = {'contentBinding': "STRING",'valueBinding': "STRING",'name': "ID",'id': "ID"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{

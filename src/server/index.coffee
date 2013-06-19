@@ -5,7 +5,7 @@ fs = require 'fs'
 mongoose = require 'mongoose'
 Mongo_Store = require('connect-mongo')(express)
 PORT = process.env.PORT || 3000
-MONGO_URI = 'mongodb://localhost/embers'
+MONGO_URI = 'mongodb://localhost/sand'
 
 mongoose.connect MONGO_URI, (err) ->
   throw err if err

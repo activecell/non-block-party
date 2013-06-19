@@ -45,26 +45,7 @@
 }).call(this);
 
 
-},{"./application.coffee":1}],3:[function(require,module,exports){
-(function() {
-  var App;
-
-  App = require('../application.coffee');
-
-  App.Standup = DS.Model.extend({
-    status: DS.attr('string'),
-    today: DS.attr('string'),
-    tomorrow: DS.attr('string'),
-    questions: DS.attr('string'),
-    user: DS.attr('string')
-  });
-
-  module.exports = App.Standup;
-
-}).call(this);
-
-
-},{"../application.coffee":1}],4:[function(require,module,exports){
+},{"./application.coffee":1}],4:[function(require,module,exports){
 (function() {
   var App;
 
@@ -101,5 +82,24 @@
 }).call(this);
 
 
-},{"./application.coffee":1}]},{},[1])
+},{"./application.coffee":1}],3:[function(require,module,exports){
+(function() {
+  var App;
+
+  App = require('../application.coffee');
+
+  App.Standup = DS.Model.extend({
+    status: DS.attr('string'),
+    today: DS.attr('string'),
+    tomorrow: DS.attr('string'),
+    questions: DS.attr('string'),
+    user: DS.attr('string')
+  });
+
+  module.exports = App.Standup;
+
+}).call(this);
+
+
+},{"../application.coffee":1}]},{},[1])
 ;

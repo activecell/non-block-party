@@ -5,7 +5,7 @@
 
 <div class=new-standup>
   <h3>Submit a new standup</h3>
-  <form {{action "submit" on="submit"}}>
+  <form {{action "submit" on="submit"}} class=standup-form>
     <p>
       <label for=status>Status</label>
       {{view Ember.Select contentBinding="App.status.content" valueBinding="App.status.value" name=status id=status}}
