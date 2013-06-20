@@ -12,6 +12,6 @@ router.post '/standups', (req, res) ->
   return res.json {} unless req.body and req.body.standup
   standup = new Standup req.body.standup
   standup.save()
-  res.json standup
+  res.json 201, standup
 
 module.exports = router
