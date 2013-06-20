@@ -8,22 +8,22 @@
   <form {{action "submit" on="submit"}} class=standup-form>
     <p>
       <label for=status>Status</label>
-      {{view Ember.Select contentBinding="App.status.content" valueBinding="App.status.value" name=status id=status}}
+      {{view Ember.Select contentBinding="App.status.content" valueBinding="App.status.value" name="status" id="status"}}
     </p>
     <p>
       <label for=today>Today</label>
-      {{textarea value=today id=today}}
+      {{textarea valueBinding="today" name="today" id="today"}}
     </p>
     <p>
       <label for=tomorrow>Tomorrow</label>
-      {{textarea value=tomorrow id=tomorrow}}
+      {{textarea valueBinding="tomorrow" name="tomorrow" id="tomorrow"}}
     </p>
     <p>
       <label for=questions>Questions/Issues</label>
-      {{textarea value=questions id=questions}}
+      {{textarea valueBinding="questions" name="questions" id="questions"}}
     <p>
       <label for=user>User</label>
-      {{input value=user type="text" id=user}}
+      {{input valueBinding="user" type="text" name="user" id="user"}}
     </p>
     <input type=submit />
     {{#linkTo updates}}<button>View All</button>{{/linkTo}}

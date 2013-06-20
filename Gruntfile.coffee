@@ -1,3 +1,7 @@
+mongoose = require 'mongoose'
+
+MONGO_URI = 'mongodb://localhost/sand'
+
 # This is the main application configuration file.  It is a Grunt
 # configuration file, which you can learn more about here:
 # https://github.com/cowboy/grunt/blob/master/docs/configuring.md
@@ -90,3 +94,13 @@ module.exports = (grunt) ->
 
   grunt.registerTask "compile", ["concat:vendor", "coffeeify", "sass", "ember_handlebars", "concat:css"]
   grunt.registerTask "production", ["compile", "uglify"]
+
+  grunt.registerTask "drop", "drop the database", ->
+    # async mode
+    done = @async()
+
+    mongoose.connect MONGO_URI, (err) ->
+      throw err if err
+      mongoose.connection.db.dropDatabase done
+
+

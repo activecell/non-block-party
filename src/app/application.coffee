@@ -4,6 +4,7 @@ module.exports = window.App = Ember.Application.create()
 App.status =
   content: ['Green', 'Yellow', 'Red']
 
+
 # Bootstrap store
 store = require './store.coffee'
 # Bootstrap models

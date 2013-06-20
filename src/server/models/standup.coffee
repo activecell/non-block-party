@@ -16,3 +16,4 @@ standupSchema = new Schema
   user: String
 
 module.exports = mongoose.model 'Standup', standupSchema
+
