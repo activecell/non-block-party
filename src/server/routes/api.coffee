@@ -10,7 +10,8 @@ router.get '/standups', (req, res) ->
 
 router.post '/standups', (req, res) ->
   return res.json {} unless req.body and req.body.standup
-  standup = new Standup req.body.standup
+  { status, today, tomorrow, standup, questions, user } = req.body.standup
+  standup = new Standup { status, today, tomorrow, standup, questions, user }
   standup.save()
   res.json 201, standup
 
