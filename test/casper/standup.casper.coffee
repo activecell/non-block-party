@@ -26,7 +26,7 @@ casper.then ->
     today: 'Today is the day'
     tomorrow: 'Tomorrow is Today'
     questions: '?uesto of the roots'
-    user: 'Ernest J'
+    user: 'Ernest J.'
 
 casper.then ->
   @echo "======Check that the form is filled======"
