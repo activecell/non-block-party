@@ -10,8 +10,7 @@ casper.then ->
 
   @test.assertSelectorExists '.standup-form'
   @test.assertSelectorExists '.standup-form select'
-  options = @evaluate ->
-    document.querySelectorAll('.standup-form select option')
+  options = @evaluate -> $('.standup-form select option')
   @test.assertEquals options.length, 3, 'There should be 3 options'
   $textareas = @evaluate -> $('.standup-form textarea')
 
@@ -39,8 +38,7 @@ casper.then ->
 
 casper.then ->
   @echo "======Submit the form======"
-  @evaluate ->
-    $('.standup-form input[type=submit]').submit()
+  @evaluate -> $('.standup-form input[type=submit]').submit()
   @echo 'Form Submitted'
 
 casper.waitForSelector '.updates-table', ->
