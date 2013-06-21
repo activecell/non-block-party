@@ -1,7 +1,5 @@
 casper = require('casper').create()
 
-$textareas = []
-
 casper.start 'http://localhost:3000', ->
   @test.assertTitle 'Sand'
 
