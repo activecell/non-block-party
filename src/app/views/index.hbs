@@ -8,7 +8,7 @@
   <form {{action "submit" on="submit"}} class=standup-form>
     <p>
       <label for=status>Status</label>
-      {{view Ember.Select contentBinding="App.status.content" valueBinding="App.status.value" name="status" id="status"}}
+      {{view Ember.Select contentBinding="App.status.content" valueBinding="status" name="status" id="status"}}
     </p>
     <p>
       <label for=today>Today</label>

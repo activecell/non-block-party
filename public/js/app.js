@@ -45,43 +45,6 @@
 }).call(this);
 
 
-},{"./application.coffee":1}],4:[function(require,module,exports){
-(function() {
-  var App;
-
-  App = require('./application.coffee');
-
-  App.Router.map(function() {
-    this.resource('index', {
-      path: '/'
-    });
-    return this.resource('updates', {
-      path: '/updates'
-    });
-  });
-
-  App.IndexController = Ember.Controller.extend({
-    submit: function() {
-      var form, standup,
-        _this = this;
-      form = this.getProperties("today", "tomorrow", "questions", "user");
-      form.status = App.status.value;
-      standup = App.Standup.createRecord(form);
-      return standup.save().then(function() {
-        return _this.transitionToRoute('updates');
-      });
-    }
-  });
-
-  App.UpdatesRoute = Ember.Route.extend({
-    model: function() {
-      return App.Standup.find();
-    }
-  });
-
-}).call(this);
-
-
 },{"./application.coffee":1}],3:[function(require,module,exports){
 (function() {
   var App;
@@ -101,5 +64,42 @@
 }).call(this);
 
 
-},{"../application.coffee":1}]},{},[1])
+},{"../application.coffee":1}],4:[function(require,module,exports){
+(function() {
+  var App;
+
+  App = require('./application.coffee');
+
+  App.Router.map(function() {
+    this.resource('index', {
+      path: '/'
+    });
+    return this.resource('updates', {
+      path: '/updates'
+    });
+  });
+
+  App.IndexController = Ember.Controller.extend({
+    submit: function() {
+      var form, standup,
+        _this = this;
+      form = this.getProperties("status", "today", "tomorrow", "questions", "user");
+      console.log(form);
+      standup = App.Standup.createRecord(form);
+      return standup.save().then(function() {
+        return _this.transitionToRoute('updates');
+      });
+    }
+  });
+
+  App.UpdatesRoute = Ember.Route.extend({
+    model: function() {
+      return App.Standup.find();
+    }
+  });
+
+}).call(this);
+
+
+},{"./application.coffee":1}]},{},[1])
 ;

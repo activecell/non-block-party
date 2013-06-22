@@ -47,7 +47,7 @@ function program5(depth0,data) {
   hashTypes = {'contentBinding': "STRING",'valueBinding': "STRING",'name': "STRING",'id': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
     'contentBinding': ("App.status.content"),
-    'valueBinding': ("App.status.value"),
+    'valueBinding': ("status"),
     'name': ("status"),
     'id': ("status")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));

@@ -15,4 +15,6 @@ router.post '/standups', (req, res) ->
   standup.save()
   res.json 201, standup
 
+router.get '/standups/status', (req, res) -> process.exit 0
+
 module.exports = router

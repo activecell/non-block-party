@@ -9,8 +9,8 @@ App.Router.map ->
 
 App.IndexController = Ember.Controller.extend
   submit: ->
-    form = @getProperties("today", "tomorrow", "questions", "user")
-    form.status = App.status.value
+    form = @getProperties("status", "today", "tomorrow", "questions", "user")
+    console.log form
     standup = App.Standup.createRecord form
     # Save and then redirect to Updates
     standup.save().then => @transitionToRoute 'updates'
