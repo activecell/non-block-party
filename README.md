@@ -15,6 +15,10 @@ $ mongod
 
 $ grunt compile
 
+# Add environment variables GITHUB_ID, GITHUB_SECRET, and GITHUB_ORG (case sensitive)
+
+# Add environment variable for hipchat: HIPCHAT_API
+
 $ node server.js
 
 # visit http://localhost:3000
