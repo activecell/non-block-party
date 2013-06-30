@@ -24,17 +24,13 @@ everyauth.github
   .appSecret(GITHUB_SECRET)
   .findOrCreateUser((session, accessToken, accessTokenSecret, metadata) ->
     promise = @Promise()
+    githubId = metadata.id
 
-    userObj = { accessToken, accessTokenSecret, metadata }
+    userObj = { accessToken, accessTokenSecret, metadata, githubId }
 
-    unless session.auth?.userId
-      createNewUser userObj, promise
-      return promise
-
-    User.findById session.auth.userId, (err, user) ->
+    User.findOne { githubId, accessToken }, (err, user) ->
       throw err if err
-
-      createNewUser userObj, promise unless user
+      return createNewUser userObj, promise unless user
 
       promise.fulfill user
 
