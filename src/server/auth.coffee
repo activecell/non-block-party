@@ -51,7 +51,7 @@ createNewUser = (obj, promise) ->
     orgs = _.pluck data, 'login'
 
     if orgs.indexOf(GITHUB_ORG) is -1
-      return promise.fail new Error("User is not a member of this organization")
+      return promise.fail new Error("You are not a member of the #{GITHUB_ORG} organization")
 
     user.save()
     promise.fulfill user
