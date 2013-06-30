@@ -29,7 +29,7 @@ everyauth.github
     userObj = { accessToken, accessTokenSecret, metadata, githubId }
 
     User.findOne { githubId, accessToken }, (err, user) ->
-      throw err if err
+      return promise.fail err if err
       return createNewUser userObj, promise unless user
 
       promise.fulfill user
@@ -46,7 +46,7 @@ createNewUser = (obj, promise) ->
     token: obj.accessToken
 
   github.user.getOrgs {}, (err, data) ->
-    throw err if err
+    return promise.fail err if err
 
     orgs = _.pluck data, 'login'
 
