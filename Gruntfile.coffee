@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 
-MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/sand'
+MONGO_URI = 'mongodb://localhost/sand'
 
 # This is the main application configuration file.  It is a Grunt
 # configuration file, which you can learn more about here:
