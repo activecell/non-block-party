@@ -14,5 +14,7 @@ App.Standup = DS.Model.extend
   # Once we implement the users model, we'll use this schema type:
   # { type: Schema.Types.ObjectId, ref: 'User' }
   user: DS.attr 'string'
+  becameError: ->
+    alert "You're not logged in! Please login to submit a standup."
 
 module.exports = App.Standup

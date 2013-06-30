@@ -4,6 +4,7 @@ path = require 'path'
 fs = require 'fs'
 mongoose = require 'mongoose'
 everyauth = require 'everyauth'
+csrf = express.csrf()
 Mongo_Store = require('connect-mongo')(express)
 PORT = process.env.PORT || 3000
 MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/sand'
@@ -41,6 +42,9 @@ app.configure ->
     secret: 'what would you like'
     store: new Mongo_Store
       url: MONGO_URI
+  app.use (req, res, next) ->
+    return csrf req, res, next if req.session.auth?.userId
+    next()
   app.use everyauth.middleware(app)
   app.use app.router
   app.use require('./routes').middleware

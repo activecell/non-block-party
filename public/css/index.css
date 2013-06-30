@@ -6187,3 +6187,6 @@ table {
   text-align: center; }
   .new-standup textarea {
     height: 80px; }
+
+input#csrf {
+  display: none; }

@@ -14,6 +14,12 @@
 
   routes = require('./routes.coffee');
 
+  $(function() {
+    return $(document).ajaxSend(function(e, xhr, options) {
+      return xhr.setRequestHeader("X-CSRF-Token", csrf);
+    });
+  });
+
 }).call(this);
 
 
@@ -56,7 +62,10 @@
     today: DS.attr('string'),
     tomorrow: DS.attr('string'),
     questions: DS.attr('string'),
-    user: DS.attr('string')
+    user: DS.attr('string'),
+    becameError: function() {
+      return alert("You're not logged in! Please login to submit a standup.");
+    }
   });
 
   module.exports = App.Standup;
@@ -84,7 +93,6 @@
       var form, standup,
         _this = this;
       form = this.getProperties("status", "today", "tomorrow", "questions", "user");
-      console.log(form);
       standup = App.Standup.createRecord(form);
       return standup.save().then(function() {
         return _this.transitionToRoute('updates');

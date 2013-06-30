@@ -16,8 +16,10 @@ router.get '/standups', (req, res) ->
     res.json standups: standups
 
 router.post '/standups', (req, res) ->
-  return res.json {} unless req.body and req.body.standup
-  { status, today, tomorrow, standup, questions, user } = req.body.standup
+  return res.json 401, { err: 'No Standup' } unless req.body and req.body.standup
+  return res.json 401, { err: 'Not logged in' } unless req.session.auth?.github?.user?.login
+  { status, today, tomorrow, standup, questions } = req.body.standup
+  user = req.session.auth.github.user.login
   standup = new Standup { status, today, tomorrow, standup, questions, user }
   standup.save()
 

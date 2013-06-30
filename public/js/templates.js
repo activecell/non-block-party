@@ -78,16 +78,6 @@ function program5(depth0,data) {
     'id': ("questions")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.textarea),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
-  data.buffer.push("\n    <p>\n      <label for=user>User</label>\n      ");
-  hashContexts = {'valueBinding': depth0,'type': depth0,'name': depth0,'id': depth0};
-  hashTypes = {'valueBinding': "STRING",'type': "STRING",'name': "STRING",'id': "STRING"};
-  options = {hash:{
-    'valueBinding': ("user"),
-    'type': ("text"),
-    'name': ("user"),
-    'id': ("user")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\n    </p>\n    <input type=submit />\n    ");
   hashTypes = {};
   hashContexts = {};
