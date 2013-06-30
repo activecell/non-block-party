@@ -3,6 +3,7 @@ http = require 'http'
 path = require 'path'
 fs = require 'fs'
 mongoose = require 'mongoose'
+everyauth = require 'everyauth'
 Mongo_Store = require('connect-mongo')(express)
 PORT = process.env.PORT || 3000
 MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost/sand'
@@ -21,6 +22,9 @@ forceSSL = (req, res, next) ->
   # Redirect to https
   res.redirect 301, "https://" + req.headers.host + req.path
 
+# Import authentication strategies
+require './auth'
+
 app = express()
 
 app.configure ->
@@ -37,6 +41,7 @@ app.configure ->
     secret: 'what would you like'
     store: new Mongo_Store
       url: MONGO_URI
+  app.use everyauth.middleware(app)
   app.use app.router
   app.use require('./routes').middleware
   app.use '/api/v1', require('./routes/api').middleware
