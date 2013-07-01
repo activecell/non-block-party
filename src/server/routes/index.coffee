@@ -8,7 +8,7 @@ router.get '/', (req, res) ->
   loggedIn = !!req.session.auth?.userId
 
   res.render 'index',
-    csrf: req.session._csrf || ''
+    csrf: req.session._csrf
     loggedIn: loggedIn
     user: if loggedIn then req.session.auth.github.user.login else ''
 

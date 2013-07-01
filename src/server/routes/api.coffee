@@ -10,7 +10,6 @@ HIPCHAT_ROOM = process.env.HIPCHAT_ROOM
 if HIPCHAT_API and HIPCHAT_ROOM
   hipchat = new require('node-hipchat')(process.env.HIPCHAT_API)
 
-
 router.get '/standups', (req, res) ->
   Standup.find().sort('-timestamp').exec (err, standups) ->
     res.json standups: standups
@@ -18,7 +17,9 @@ router.get '/standups', (req, res) ->
 router.post '/standups', (req, res) ->
   return res.json 401, { err: 'No Standup' } unless req.body and req.body.standup
   return res.json 401, { err: 'Not logged in' } unless req.session.auth?.github?.user?.login
+
   { status, today, tomorrow, standup, questions } = req.body.standup
+
   user = req.session.auth.github.user.login
   standup = new Standup { status, today, tomorrow, standup, questions, user }
   standup.save()
