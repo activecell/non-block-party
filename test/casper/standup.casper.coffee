@@ -13,7 +13,6 @@ casper.then ->
   $textareas = @evaluate -> $('.standup-form textarea')
 
   @test.assertEquals $textareas.length, 3, 'There should be 3 textareas'
-  @test.assertSelectorExists '.standup-form input[name=user]'
   @test.assertSelectorExists '.standup-form input[type=submit]'
 
 casper.then ->
@@ -23,7 +22,6 @@ casper.then ->
     today: 'Today is the day'
     tomorrow: 'Tomorrow is Today'
     questions: '?uesto of the roots'
-    user: 'Ernest J.'
 
 casper.then ->
   @echo "======Check that the form is filled======"
@@ -32,7 +30,6 @@ casper.then ->
   @test.assertEquals form.today, 'Today is the day', 'today should equal: Today is the day'
   @test.assertEquals form.tomorrow, 'Tomorrow is Today', 'tomorrow should equal: Tomorrow is Today'
   @test.assertEquals form.questions, '?uesto of the roots', 'questions should equal: ?uesto of the roots'
-  @test.assertEquals form.user, 'Ernest J.', 'user should equal: Ernest J.'
 
 casper.then ->
   @echo "======Submit the form======"
@@ -47,7 +44,6 @@ casper.waitForSelector '.updates-table', ->
   @test.assertSelectorHasText '.updates-table tr td', 'Today is the day'
   @test.assertSelectorHasText '.updates-table tr td', 'Tomorrow is Today'
   @test.assertSelectorHasText '.updates-table tr td', '?uesto of the roots'
-  @test.assertSelectorHasText '.updates-table tr td', 'Ernest J.'
 
 
 # Execute Casper commands
