@@ -23,7 +23,7 @@
 }).call(this);
 
 
-},{"./store.coffee":2,"./models/standup.coffee":3,"./routes.coffee":4}],2:[function(require,module,exports){
+},{"./models/standup.coffee":2,"./store.coffee":3,"./routes.coffee":4}],3:[function(require,module,exports){
 (function() {
   var App;
 
@@ -51,29 +51,7 @@
 }).call(this);
 
 
-},{"./application.coffee":1}],3:[function(require,module,exports){
-(function() {
-  var App;
-
-  App = require('../application.coffee');
-
-  App.Standup = DS.Model.extend({
-    status: DS.attr('string'),
-    today: DS.attr('string'),
-    tomorrow: DS.attr('string'),
-    questions: DS.attr('string'),
-    user: DS.attr('string'),
-    becameError: function() {
-      return alert("You're not logged in! Please login to submit a standup.");
-    }
-  });
-
-  module.exports = App.Standup;
-
-}).call(this);
-
-
-},{"../application.coffee":1}],4:[function(require,module,exports){
+},{"./application.coffee":1}],4:[function(require,module,exports){
 (function() {
   var App;
 
@@ -95,6 +73,13 @@
       form = this.getProperties("status", "today", "tomorrow", "questions", "user");
       standup = App.Standup.createRecord(form);
       return standup.save().then(function() {
+        _this.setProperties({
+          status: '',
+          today: '',
+          tomorrow: '',
+          questions: '',
+          user: ''
+        });
         return _this.transitionToRoute('updates');
       });
     }
@@ -109,5 +94,27 @@
 }).call(this);
 
 
-},{"./application.coffee":1}]},{},[1])
+},{"./application.coffee":1}],2:[function(require,module,exports){
+(function() {
+  var App;
+
+  App = require('../application.coffee');
+
+  App.Standup = DS.Model.extend({
+    status: DS.attr('string'),
+    today: DS.attr('string'),
+    tomorrow: DS.attr('string'),
+    questions: DS.attr('string'),
+    user: DS.attr('string'),
+    becameError: function() {
+      return alert("You're not logged in! Please login to submit a standup.");
+    }
+  });
+
+  module.exports = App.Standup;
+
+}).call(this);
+
+
+},{"../application.coffee":1}]},{},[1])
 ;

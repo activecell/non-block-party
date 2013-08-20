@@ -8,7 +8,7 @@ HIPCHAT_API = process.env.HIPCHAT_API
 HIPCHAT_ROOM = process.env.HIPCHAT_ROOM
 
 if HIPCHAT_API and HIPCHAT_ROOM
-  hipchat = new require('node-hipchat')(process.env.HIPCHAT_API)
+  hipchat = new require('hipchat')(HIPCHAT_API)
 
 router.get '/standups', (req, res) ->
   Standup.find().sort('-timestamp').exec (err, standups) ->
@@ -24,11 +24,19 @@ router.post '/standups', (req, res) ->
   standup = new Standup { status, today, tomorrow, standup, questions, user }
   standup.save()
 
-  if hipchat
-    hipchat.postMessage
-      room: HIPCHAT_ROOM
+  if hipchat?.Rooms
+    message = """
+    <a href="http://github.com/#{user}">#{user}</a> has posted a <a href="http://nonblockparty.com/#/updates">new standup<a/>.
+    <br>
+    - Today: #{today}
+    <br>
+    - Tomorrow: #{tomorrow}
+    <br>
+    - Questions: #{questions}
+    <br>
+    """
+    hipchat.Rooms.message HIPCHAT_ROOM, 'Non-Block Party', message,
       color: status.toLowerCase()
-      message: 'New standup posted by: ' + user
 
   res.json 201, standup
 
