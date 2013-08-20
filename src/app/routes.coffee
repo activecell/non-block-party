@@ -13,7 +13,9 @@ App.IndexController = Ember.Controller.extend
 
     standup = App.Standup.createRecord form
     # Save and then redirect to Updates
-    standup.save().then => @transitionToRoute 'updates'
+    standup.save().then =>
+    	@setProperties status: '', today: '', tomorrow: '', questions: '', user: ''
+    	@transitionToRoute 'updates'
 
 App.UpdatesRoute = Ember.Route.extend
   model: -> App.Standup.find()
