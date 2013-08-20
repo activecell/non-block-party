@@ -25,7 +25,17 @@ router.post '/standups', (req, res) ->
   standup.save()
 
   if hipchat?.Rooms
-    hipchat.Rooms.message HIPCHAT_ROOM, 'Non-Block Party', "New standup posted by: #{user}",
+    message = """
+    <a href="http://github.com/#{user}">#{user}</a> has posted a <a href="http://nonblockparty.com/#/updates">new standup<a/>.
+    <br>
+    - Today: #{today}
+    <br>
+    - Tomorrow: #{tomorrow}
+    <br>
+    - Questions: #{questions}
+    <br>
+    """
+    hipchat.Rooms.message HIPCHAT_ROOM, 'Non-Block Party', message,
       color: status.toLowerCase()
 
   res.json 201, standup
