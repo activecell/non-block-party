@@ -1,14 +1,14 @@
 {
-  "name": "sand",
-  "version": "0.0.0-1",
-  "description": "sand",
+  "name": "non-block-party",
+  "version": "0.0.1",
+  "description": "Asynchronous, non-blocking stand-ups",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/switz/embers.git"
+    "url": "git@github.com:activecell/non-block-party.git"
   },
   "readmeFilename": "README.md",
   "dependencies": {
